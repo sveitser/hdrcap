@@ -11,5 +11,8 @@ for p in `seq 1 $NPIC`; do
   gphoto2 --capture-image-and-download --force-overwrite --filename=$p.JPG
 done
 
+# clean-up
+gphoto2 --set-config exposurecompensation=0
+
 # compose
 # mantiukhdr -o hdr.jpg *.JPG
