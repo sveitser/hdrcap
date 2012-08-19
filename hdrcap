@@ -1,0 +1,14 @@
+#!/bin/sh
+
+gphoto2 --auto-detect
+# gphoto2 --set-config autofocusdrive=1 # can't turn of AF via software(?)
+NPIC=9
+RANGE=9
+
+for p in `seq 1 $NPIC`; do
+  EXPCOMP=$(($(($p-1-$RANGE/2))*1000))
+  gphoto2 --set-config exposurecompensation=$EXPCOMP
+  gphoto2 --capture-image-and-download --force-overwrite --filename=$p.JPG
+done
+
+
